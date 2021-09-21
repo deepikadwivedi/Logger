@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+
+    <title>Logging REST API | Documentation by Deepika Dwivedi</title>
+  </head>
+  <body>
+    <body style="background-color:white;">
+    <h1 style='text-align:center;'>Remote logging REST API</h1>
+    <hr>
+    <h2> REST API Endpoints</h2>
+      <h3><pre>/logfiles</pre></h3>
+      <h4 style="font-family:verdana">Query parameters:</h4>
+      <ol style="font-family:verdana">
+	    <li>filename: Filename to retrieve logs from: required</li>
+	    <li><i>numlines</i>. Defaults to 10, optional</li>
+	    <li><i>query</i>, Regex filter for log retrieval: optional</li>
+      </ol>
+      <h4 style="font-family:verdana">Response: JSON formatted</h4>	    
+      <ol style="font-family:verdana">
+	<li><b>Success</b><br>
+	  <code>search_result</code>: JSON list</li><br>
+	<li><b>Failure</b><br>
+	  HTTP 400s with appropriate response code
+	  <ol style="font-family:verdana">
+	    <li>Invalid file name</li>
+	    <li>Negative or malformed numlines</li>
+	    <li>Invalid query parameter due to malformed regex</li>
+	  </ol>
+      </ol>
+      <h4 style="font-family:verdana">Examples</h4>
+      <ol style="font-family:verdana">
+	<li style="font-family:verdana">Query last 10 lines of file system.log </li>
+	<pre> '/logfiles?filename=system.log</pre>
+	<li style="font-family:verdana">Query last 10 lines of file system.log with a regexp filter query added</li>
+	<pre> '/logfiles?filename=system.log&numlines=10&query=.*ASL'<pre>
+      </ol>
+      <h4 style="font-family:verdana">Authentication</h4>
+      <font style="font-family:verdana">Currently not supported</font>
+    </p>
+  </body>
+</html>
