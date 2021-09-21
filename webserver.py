@@ -111,6 +111,7 @@ class Logger(Resource):
         except re.error:
             abort(400, "Invalid regular expression")
         req.run()
+        req.result.reverse()
         return jsonify({"search_result": req.result})
             
 
